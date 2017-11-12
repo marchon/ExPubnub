@@ -6,13 +6,16 @@
 use Mix.Config
 
 # Configures the endpoint
-config :ex_pubnub, ExPubnub.Endpoint,
+config :ex_pubnub, ExPubnub.Endpoint, 
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "Zb/cU2+K2cLZMTvxuy7bwH7iHbkwxOdQRvQIYGMieYH+25AqeHn18UcALARMPPL0",
   render_errors: [accepts: ~w(json)],
   pubsub: [name: ExPubnub.PubSub,
            adapter: Phoenix.PubSub.PG2]
+
+config :ex_pubnub, ecto_repos: [ExPubnub.Repo]
+
 
 # Configures Elixir's Logger
 config :logger, :console,

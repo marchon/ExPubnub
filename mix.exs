@@ -9,8 +9,8 @@ defmodule ExPubnub.Mixfile do
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases,
-     deps: deps]
+     aliases: aliases(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application.
@@ -19,7 +19,7 @@ defmodule ExPubnub.Mixfile do
   def application do
     [mod: {ExPubnub, []},
      applications: [:phoenix, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -30,10 +30,12 @@ defmodule ExPubnub.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 2.0"},
-     {:gettext, "~> 0.9"},
+    [{:phoenix, "~> 1.3.0"},
+     {:postgrex, ">= 0.13.3"},
+     {:phoenix_ecto, "~> 3.3.0"},
+     {:gettext, "~> 0.13"},
+     {:sbroker, "~> 1.0"},
+     {:ecto, "~> 2.1"},
      {:cowboy, "~> 1.0"}]
   end
 
